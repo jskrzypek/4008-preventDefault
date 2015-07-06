@@ -1,0 +1,18 @@
+<ion-view title="{{ vm.title }}">
+    <ion-nav-buttons side="primary">
+        <button class="button" ng-click="vm.toggleDragFix()">
+            Turn {{ vm.dragFixed ? 'off' : 'on' }} drag handler fix
+        </button>
+    </ion-nav-buttons>
+    <ion-content class="has-tabs-top full-height" overflow-scroll="true">
+        <ion-list>
+            <ion-item ng-repeat="item in vm.items">
+                <div class="card">
+                    <div class="item item-text-wrap">
+                        Item {{ item.id }}
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>
