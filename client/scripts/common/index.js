@@ -31,7 +31,8 @@ module.exports = function(namespace) {
             $stateProvider.state('tabs', {
                 url: '/tab',
                 abstract: true,
-                template: require('./views/tabs.html')//,
+                template: require('./views/tabs.html'),
+                onEnter: require('../drag-unfix')
                 // controller: fullname + '.tabs as vm'
             });
             // $stateProvider.state('tabs.divFix', {
@@ -59,6 +60,15 @@ module.exports = function(namespace) {
                 views: {
                     'ion-list-tab': {
                         template: require('./views/ion-list.html'),
+                        controller: fullname + '.list as vm'
+                    }
+                }
+            }); 
+            $stateProvider.state('tabs.ionContent', {
+                url: '/ionContent',
+                views: {
+                    'ion-content-tab': {
+                        template: require('./views/ion-content.html'),
                         controller: fullname + '.list as vm'
                     }
                 }

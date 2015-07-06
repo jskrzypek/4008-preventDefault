@@ -7,11 +7,15 @@
 
     <ion-tabs class="tabs-icon-top tabs-positive">
 
-        <ion-tab title="ion-list" icon="ion-information" ui-sref="tabs.ionList">
+        <ion-tab title="ion-list" icon="ion-clipboard" ui-sref="tabs.ionList">
             <ion-nav-view name="ion-list-tab"></ion-nav-view>
         </ion-tab>
 
-        <ion-tab title="no ion-list" icon="ion-document-text" ui-sref="tabs.div">
+        <ion-tab title="ion-content" icon="ion-document-text" ui-sref="tabs.ionContent">
+            <ion-nav-view name="ion-content-tab"></ion-nav-view>
+        </ion-tab>
+
+        <ion-tab title="div" icon="ion-document" ui-sref="tabs.div">
             <ion-nav-view name="div-tab"></ion-nav-view>
         </ion-tab>
 
