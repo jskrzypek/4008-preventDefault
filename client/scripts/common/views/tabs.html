@@ -1,22 +1,16 @@
 <ion-view>
-    <ion-nav-buttons side="primary">
-        <button class="button" ng-click="vm.toggleDragFix()" >
-            Turn {{ vm.dragFixed ? 'off' : 'on' }} drag handler fix
-        </button>
-    </ion-nav-buttons>
+    <ion-tabs class="tabs-icon-top tabs-dark">
 
-    <ion-tabs class="tabs-icon-top tabs-positive">
+        <ion-tab title="ion-content" icon="ion-help-circled" ui-sref="tabs.ionContent">
+            <ion-nav-view name="ion-content-tab"></ion-nav-view>
+        </ion-tab> 
+
+        <ion-tab title="ion-content2" icon="ion-document-text" ui-sref="tabs.ionContent2">
+            <ion-nav-view name="ion-content2-tab"></ion-nav-view>
+        </ion-tab>
 
         <ion-tab title="ion-list" icon="ion-clipboard" ui-sref="tabs.ionList">
             <ion-nav-view name="ion-list-tab"></ion-nav-view>
-        </ion-tab>
-
-        <ion-tab title="ion-content" icon="ion-document-text" ui-sref="tabs.ionContent">
-            <ion-nav-view name="ion-content-tab"></ion-nav-view>
-        </ion-tab>
-
-        <ion-tab title="div" icon="ion-document" ui-sref="tabs.div">
-            <ion-nav-view name="div-tab"></ion-nav-view>
         </ion-tab>
 
     </ion-tabs>

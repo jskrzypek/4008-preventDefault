@@ -1,14 +1,22 @@
-<ion-view title="{{vm.title}}">
-    <ion-nav-buttons side="primary">
-        <button class="button" ng-click="vm.toggleDragFix()">
-            Turn {{ vm.dragFixed ? 'off' : 'on' }} drag handler fix
-        </button>
-    </ion-nav-buttons>
-    <ion-content class="full-height native-scroll">
+<ion-view hide-nav-bar="true">
+    <ion-header-bar align-title="center" class="bar-dark">
+        <div class="buttons">
+            <button menu-toggle="left" class="button button-clear button-balanced icon yo-menu"></button>
+        </div>
+        <div class="title title-center header-item">
+            <span class="nav-bar-title">
+                {{ vm.title }}
+            </span>
+        </div>
+        <div class="buttons">
+            <button class="button button-clear button-balanced icon {{vm.getToggleDragIcon()}}" ng-click="vm.toggleDragFix()"></button>
+        </div>
+    </ion-header-bar>
+    <ion-content class="full-height" overflow-scroll="true">
         <div ng-repeat="item in vm.items">
             <div class="card">
                 <div class="item item-text-wrap">
-                    Item {{ item.id }}
+                    {{ item }}
                 </div>
             </div>
         </div>

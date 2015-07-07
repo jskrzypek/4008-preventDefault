@@ -25,7 +25,6 @@ var run = function($ionicPlatform, $window) {
             $window.TestFairy.begin(process.env.TESTFAIRY_IOS_APP_TOKEN);
         }
     });
-    require('./drag-unfix');
 };
 
 run.$inject = runDeps;

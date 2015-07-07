@@ -11,34 +11,27 @@ module.exports = function(app) {
         var vm = this;
         vm.controllername = fullname;
 
-        if($state.is('tabs.div')) {
-            vm.title = 'div w/ ng-repeat';
-        }
-
         if($state.is('tabs.ionList')) {
             vm.title = 'ion-list & ion-item';
         }
 
+        if($state.is('tabs.ionContent')) {
+            vm.title = 'weird otherwise route fix';
+        }
+
+        if($state.is('tabs.ionContent2')) {
+            vm.title = 'div w/ ng-repeat';
+        }
+
         vm.items = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6', 'Item 7', 'Item 8', 'Item 9', 'Item 10', 'Item 11', 'Item 12'];
 
-        vm.doRefresh = function() {
-            console.log('Refreshing!');
-            $timeout(function() {
-                //simulate async response
-                vm.items.push('New Item ' + Math.floor(Math.random() * 1000) + 4);
-
-                //Stop the ion-refresher from spinning
-                $scope.$broadcast('scroll.refreshComplete');
-
-            }, 1000);
+        vm.getToggleDragIcon = function() {
+            return window.ionic.dragFixed ? 'ion-heart' : 'ion-heart-broken';
         };
         vm.toggleDragFix = function() {
-            if(!vm.dragFixed) {
-                require('../../drag-fix')();
-            } else {
-                require('../../drag-unfix')();
-            }
-            vm.dragFixed = !vm.dragFixed;
+            require('../../drag-handler')({
+                fix: !window.ionic.dragFixed
+            });
         };
     }
 
