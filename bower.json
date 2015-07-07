@@ -10,9 +10,9 @@
   ],
   "dependencies": {
     "marked": "0.3.3",
-    "ionic": "1.0.0"
+    "ionic": "1.0.1"
   },
   "resolutions": {
-    "ionic": "~1.0.1"
+    "ionic": "1.0.1"
   }
 }

@@ -1,12 +1,39 @@
 # 4008-preventdefault 
-[![NPM version](https://badge.fury.io/js/4008-preventdefault.svg)](http://badge.fury.io/js/4008-preventdefault) [![Downloads](http://img.shields.io/npm/dm/4008-preventdefault.svg)](http://badge.fury.io/js/4008-preventdefault)   
-[![Build Status](https://travis-ci.org//4008-preventdefault.svg?branch=master)](https://travis-ci.org//4008-preventdefault) [![Test Coverage](https://codeclimate.com/github//4008-preventdefault/badges/coverage.svg)](https://codeclimate.com/github//4008-preventdefault) [![Code Climate](https://codeclimate.com/github//4008-preventdefault/badges/gpa.svg)](https://codeclimate.com/github//4008-preventdefault)   
-[![Dependency Status](https://david-dm.org//4008-preventdefault.svg)](https://david-dm.org//4008-preventdefault) [![devDependency Status](https://david-dm.org//4008-preventdefault/dev-status.svg)](https://david-dm.org//4008-preventdefault#info=devDependencies) [![peerDependency Status](https://david-dm.org//4008-preventdefault/peer-status.svg)](https://david-dm.org//4008-preventdefault#info=peerDependencies)    
+This is a repo to demonstrate a bug in `ionic@1.0.1`, documented at: https://github.com/driftyco/ionic/issues/4008
 
+> ***This repo is built with [`generator-mcfly`](https://github.com/mcfly-io/generator-mcfly) our yeoman generator that gives you a pre-wired gulp & browserify build system for angular apps and options to automatically integrate ionic.***
 
-> 
-
-[![NPM](https://nodei.co/npm/4008-preventdefault.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/4008-preventdefault)
+Steps to reproduce: 
+1. Clone the repo & `cd` into the directory
+    ```sh
+    git clone https://github.com/jskrzypek/4008-preventDefault#master && cd 4008-preventDefault
+    ```
+1. Install npm & bower dependencies
+    ```sh
+    npm install && bower install
+    ```
+1. Use git to apply a patch to stick some `console.log` messages on the `Drag` handler
+    ```sh
+    git apply ionic.js.patch
+    ```
+1. Use our gulp task to build the distributed code (using browserify)
+   ```sh
+   gulp dist
+   ```
+1. `cd` into the directory where the ionic project sits
+    ```sh
+    cd dist/app/dev
+    ```
+1. Add platforms
+    ```sh
+    ionic platform add android ios
+    ```
+1. Run/build for either platform with `ionic run ...`. Note that I am currently only able to reproduce this bug in ios.
+1. Attach your console (safari developer view for `ios` or [chrome://inspect#devices](chrome://inspect#devices) for `android`)
+1. In the tab labeled `ion-list` you should be able to scroll fine via dragging, and should see messages logged by the drag handler from our patch.
+1. Switch to the tab labeled `ion-content`. On ios you will *not* be able to scroll via dragging, but messages will be logged to the console showing us that the `ev.preventDefault()` method is being called on these legitimate drag events.
+1. Click the red heart in the upper-right corner. This will run the [`drag-handler.js`](https://github.com/jskrzypek/4008-preventDefault/blob/master/client/scripts/drag-handler.js) script that swaps out the current version of the handler for the one with my suggested fixes.
+1. Now you can scroll just fine in the `ion-content` tab and `ev.preventDefault()` is not being called when it shouldn't be.
 
 ## Usage
 
