@@ -109,8 +109,8 @@
   "browser": {
     "unitHelper": "./test/unit/unitHelper.js",
     "lbServices": "./client/scripts/lbServices.js",
-    "ionXXic": "./bower_components/ionic/release/js/ionic.js",
-    "ionic": "./client/scripts/ionic.js",
+    "ionic": "./bower_components/ionic/release/js/ionic.js",
+    "ionXXic": "./client/scripts/ionic.js",
     "angular-ionic": "./bower_components/ionic/release/js/ionic-angular.js"
   },
   "browserify": {
