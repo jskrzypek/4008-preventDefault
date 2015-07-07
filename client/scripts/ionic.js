@@ -1773,6 +1773,7 @@ window.ionic.version = '1.0.1';
     },
     triggered: false,
     handler: function dragGesture(ev, inst) {
+      console.log('dragGesture() called without fix', ev, inst);
       if (ev.srcEvent.type == 'touchstart' || ev.srcEvent.type == 'touchend') {
         this.preventedFirstMove = false;
 
@@ -1780,6 +1781,7 @@ window.ionic.version = '1.0.1';
         // Prevent gestures that are not intended for this event handler from firing subsequent times
         if (inst.options.prevent_default_directions.length === 0
             || inst.options.prevent_default_directions.indexOf(ev.direction) != -1) {
+          console.log('calling preventDefault() on drag without fix');
           ev.srcEvent.preventDefault();
         }
         this.preventedFirstMove = true;
