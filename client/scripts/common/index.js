@@ -16,36 +16,29 @@ module.exports = function(namespace) {
 
     app.config(['$stateProvider', '$urlRouterProvider',
         function($stateProvider, $urlRouterProvider) {
-            $urlRouterProvider.otherwise('/tab/ionContent');
+            $urlRouterProvider.otherwise('/tab/ionList');
 
             $stateProvider.state('tabs', {
                 url: '/tab',
                 abstract: true,
                 template: require('./views/tabs.html')
             });
-            $stateProvider.state('tabs.ionContent', {
-                url: '/ionContent',
-                views: {
-                    'ion-content-tab': {
-                        template: require('./views/ion-content.html'),
-                        controller: fullname + '.list as vm'
-                    }
-                }
-            });
-            $stateProvider.state('tabs.ionContent2', {
-                url: '/ionContent2',
-                views: {
-                    'ion-content2-tab': {
-                        template: require('./views/ion-content.html'),
-                        controller: fullname + '.list as vm'
-                    }
-                }
-            });
+
             $stateProvider.state('tabs.ionList', {
                 url: '/ionList',
                 views: {
                     'ion-list-tab': {
                         template: require('./views/ion-list.html'),
+                        controller: fullname + '.list as vm'
+                    }
+                }
+            });
+
+            $stateProvider.state('tabs.ionContent', {
+                url: '/ionContent',
+                views: {
+                    'ion-content-tab': {
+                        template: require('./views/ion-content.html'),
                         controller: fullname + '.list as vm'
                     }
                 }

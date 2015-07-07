@@ -12,10 +12,6 @@ module.exports = function(app) {
         vm.controllername = fullname;
 
         if($state.is('tabs.ionContent')) {
-            vm.title = 'weird otherwise route fix';
-        }
-
-        if($state.is('tabs.ionContent2')) {
             vm.title = 'div w/ ng-repeat';
         }
 
