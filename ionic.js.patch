@@ -1,7 +1,7 @@
-diff --git i/client/scripts/ionic.js w/client/scripts/ionic.js
+diff --git i/bower_components/ionic/release/js/ionic.js w/bower_components/ionic/release/js/ionic.js
 index c0bc8be..4428e44 100644
---- i/client/scripts/ionic.js
-+++ w/client/scripts/ionic.js
+--- i/bower_components/ionic/release/js/ionic.js
++++ w/bower_components/ionic/release/js/ionic.js
 @@ -1773,6 +1773,7 @@ window.ionic.version = '1.0.1';
      },
      triggered: false,
